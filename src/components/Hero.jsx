@@ -3,7 +3,7 @@ import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0)
-  const roles = ['Full-Stack Developer', 'Frontend Developer', 'Photographer', 'Web Designer']
+  const roles = ['Frontend Developer', 'Full-Stack Developer', 'Web Designer', 'Photographer']
 
   useEffect(() => {
     const interval = setInterval(() => {
