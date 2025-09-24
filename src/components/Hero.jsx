@@ -3,11 +3,16 @@ import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0)
-  const roles = ['Frontend Developer', 'Full-Stack Developer', 'Web Designer', 'Photographer']
+  const roles = [
+    'Frontend Developer',
+    'Full-Stack Developer',
+    'Web Designer',
+    'Photographer'
+  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length)
+      setCurrentRole(prev => (prev + 1) % roles.length)
     }, 3000)
 
     return () => clearInterval(interval)
@@ -47,12 +52,14 @@ const Hero = () => {
           </p>
 
           <div className='flex sm:flex-row flex-col justify-center items-center gap-4'>
-            <button id="projects" className='bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-lg px-8 py-3 rounded-full font-medium text-white hover:scale-105 transition-all duration-300'>
-              View My Work
-            </button>
-            <a 
-              href="/Resume - Mahipal_Singh_Rawat.pdf" 
-              download="Mahipal_Singh_Rawat_Resume.pdf"
+            <a href='#projects'>
+              <button className='bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-lg px-8 py-3 rounded-full font-medium text-white hover:scale-105 transition-all duration-300'>
+                View My Work
+              </button>
+            </a>
+            <a
+              href='/Resume - Mahipal_Singh_Rawat.pdf'
+              download='Mahipal_Singh_Rawat_Resume.pdf'
               className='inline-block px-8 py-3 border-2 border-gray-300 hover:border-blue-600 rounded-full font-medium text-gray-700 hover:text-blue-600 transition-all duration-300'
             >
               Download Resume
