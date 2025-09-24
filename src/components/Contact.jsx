@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 
 const Contact = () => {
+  const [ref, isVisible] = useScrollAnimation(0.2)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,9 +56,10 @@ const Contact = () => {
     <section
       id='contact'
       className='bg-gradient-to-br from-gray-50 to-blue-50 py-20'
+      ref={ref}
     >
       <div className='mx-auto px-6 max-w-6xl'>
-        <div className='mb-16 text-center'>
+        <div className={`mb-16 text-center transition-all duration-1000 ${isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className='mb-6 font-bold text-gray-900 text-4xl md:text-5xl'>
             Get In Touch
           </h2>
@@ -69,7 +72,7 @@ const Contact = () => {
 
         <div className='gap-12 grid lg:grid-cols-2'>
           {/* Contact Information */}
-          <div className='space-y-8'>
+          <div className={`space-y-8 transition-all duration-1000 delay-300 ${isVisible ? 'animate-fade-in-left opacity-100' : 'opacity-0 -translate-x-10'}`}>
             <div>
               <h3 className='mb-6 font-semibold text-gray-900 text-2xl'>
                 Let's Connect
@@ -102,14 +105,16 @@ const Contact = () => {
                   <a
                     key={index}
                     href={info.link}
-                    className='block hover:scale-105 transition-transform duration-300'
+                    className={`block hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                    style={{ animationDelay: `${600 + index * 150}ms` }}
                   >
                     {content}
                   </a>
                 ) : (
                   <div
                     key={index}
-                    className='hover:scale-105 transition-transform duration-300'
+                    className={`hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                    style={{ animationDelay: `${600 + index * 150}ms` }}
                   >
                     {content}
                   </div>
@@ -117,7 +122,7 @@ const Contact = () => {
               })}
             </div>
 
-            <div className='bg-white shadow-sm p-6 rounded-lg'>
+            <div className={`bg-white shadow-sm p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
               <h4 className='mb-3 font-semibold text-gray-900'>
                 Quick Response
               </h4>
@@ -129,7 +134,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className='bg-white shadow-lg p-8 rounded-xl'>
+          <div className={`bg-white shadow-lg p-8 rounded-xl transition-all duration-1000 delay-500 hover:shadow-xl ${isVisible ? 'animate-fade-in-right opacity-100' : 'opacity-0 translate-x-10'}`}>
             <h3 className='mb-6 font-semibold text-gray-900 text-2xl'>
               Send a Message
             </h3>
@@ -214,7 +219,7 @@ const Contact = () => {
 
               <button
                 type='submit'
-                className='flex justify-center items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-lg px-6 py-3 rounded-lg w-full font-medium text-white hover:scale-105 transition-all duration-300'
+                className='flex justify-center items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-xl px-6 py-3 rounded-lg w-full font-medium text-white hover:scale-105 transition-all duration-300 hover:from-blue-700 hover:to-blue-800'
               >
                 <Send size={20} />
                 <span>Send Message</span>

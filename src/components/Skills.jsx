@@ -1,32 +1,34 @@
 import React from 'react'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const Skills = () => {
+  const [ref, isVisible] = useScrollAnimation(0.2)
+
   const skillCategories = [
     {
       title: 'Frontend',
       skills: [
         { name: 'React', level: 95 },
         { name: 'JavaScript', level: 92 },
-        { name: 'Tailwind CSS', level: 88 },
-        { name: 'Next.js', level: 85 }
+        { name: 'Tailwind CSS', level: 90 },
+        { name: 'HTML', level: 95 },
+        { name: 'CSS', level: 88 }
       ]
     },
     {
       title: 'Backend',
       skills: [
-        { name: 'Node.js', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'PostgreSQL', level: 82 },
-        { name: 'MongoDB', level: 80 }
+        { name: 'MongoDB', level: 80 },
+        { name: 'Node.js', level: 85 },
+        { name: 'Express', level: 82 }
       ]
     },
     {
       title: 'Tools & Other',
       skills: [
         { name: 'Git', level: 92 },
-        { name: 'Docker', level: 78 },
-        { name: 'AWS', level: 75 },
-        { name: 'Figma', level: 88 }
+        { name: 'Visual Studio', level: 90 },
+        { name: 'Vite.js', level: 85 }
       ]
     }
   ]
@@ -35,9 +37,10 @@ const Skills = () => {
     <section
       id='skills'
       className='bg-gradient-to-br from-gray-50 to-blue-50 py-20'
+      ref={ref}
     >
       <div className='mx-auto px-6 max-w-6xl'>
-        <div className='mb-16 text-center'>
+        <div className={`mb-16 text-center transition-all duration-1000 ${isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className='mb-6 font-bold text-gray-900 text-4xl md:text-5xl'>
             Skills & Expertise
           </h2>
@@ -52,7 +55,8 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className='bg-white shadow-lg hover:shadow-xl p-8 rounded-xl transition-shadow duration-300'
+              className={`bg-white shadow-lg hover:shadow-xl p-8 rounded-xl transition-all duration-500 hover:scale-105 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+              style={{ animationDelay: `${300 + categoryIndex * 200}ms` }}
             >
               <h3 className='mb-6 font-semibold text-gray-900 text-2xl text-center'>
                 {category.title}
@@ -70,8 +74,8 @@ const Skills = () => {
                     </div>
                     <div className='bg-gray-200 rounded-full w-full h-2'>
                       <div
-                        className='bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full h-2 transition-all duration-1000 ease-out'
-                        style={{ width: `${skill.level}%` }}
+                        className={`bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full h-2 transition-all duration-1500 ease-out ${isVisible ? '' : 'w-0'}`}
+                        style={{ width: isVisible ? `${skill.level}%` : '0%', transitionDelay: `${500 + categoryIndex * 200 + skillIndex * 100}ms` }}
                       ></div>
                     </div>
                   </div>
@@ -82,15 +86,15 @@ const Skills = () => {
         </div>
 
         <div className='mt-16 text-center'>
-          <div className='inline-block bg-white shadow-lg p-8 rounded-xl'>
+          <div className={`inline-block bg-white shadow-lg p-8 rounded-xl transition-all duration-1000 hover:scale-105 ${isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
             <h3 className='mb-4 font-semibold text-gray-900 text-2xl'>
               Always Learning
             </h3>
             <p className='mb-6 text-gray-600'>
-              Currently exploring: AI/ML, Web3, and Advanced React Patterns
+              Currently exploring: REST APIs, React Patterns, and Node.js
             </p>
             <div className='flex flex-wrap justify-center gap-3'>
-              {['TensorFlow', 'Solidity', 'Three.js', 'GraphQL'].map(tech => (
+              {['REST APIs', 'React Patterns', 'Node.js', 'Express.js'].map(tech => (
                 <span
                   key={tech}
                   className='bg-gradient-to-r from-blue-600 to-emerald-500 px-4 py-2 rounded-full font-medium text-white text-sm'

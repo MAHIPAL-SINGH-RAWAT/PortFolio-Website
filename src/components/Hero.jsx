@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
+  const [currentRole, setCurrentRole] = useState(0)
+  const roles = ['Full-Stack Developer', 'Frontend Developer', 'Photographer', 'Web Designer']
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about')
     if (aboutSection) {
@@ -23,7 +34,9 @@ const Hero = () => {
               </span>
             </h1>
             <h2 className='font-light text-gray-700 text-2xl md:text-3xl'>
-              Full-Stack Developer
+              <span className='inline-block min-w-[300px] text-center'>
+                {roles[currentRole]}
+              </span>
             </h2>
           </div>
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { ExternalLink, Github, Eye, Code2 } from 'lucide-react';
 
 const Projects = () => {
+  const [ref, isVisible] = useScrollAnimation(0.1);
   const [imageErrors, setImageErrors] = useState({});
   const [imageLoading, setImageLoading] = useState({});
 
@@ -92,10 +94,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="bg-gradient-to-br from-gray-50 to-white py-20">
+    <section id="projects" className="bg-gradient-to-br from-gray-50 to-white py-20" ref={ref}>
       <div className="mx-auto px-6 max-w-7xl">
         {/* Header Section */}
-        <div className="mb-20 text-center">
+        <div className={`mb-20 text-center transition-all duration-1000 ${isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className="mb-6 font-bold text-gray-900 text-4xl md:text-6xl leading-tight">
             My
             <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 text-transparent"> Projects</span>
@@ -112,13 +114,14 @@ const Projects = () => {
           {projects.map((project, index) => (
             <article
               key={index}
-              className="group bg-white shadow-lg hover:shadow-2xl backdrop-blur-sm border border-gray-100 rounded-2xl overflow-hidden transition-all hover:-translate-y-2 duration-500"
+              className={`group bg-white shadow-lg hover:shadow-2xl backdrop-blur-sm border-2 border-gradient-to-r from-blue-200 via-purple-200 to-emerald-200 hover:border-gradient-to-r hover:from-blue-400 hover:via-purple-400 hover:to-emerald-400 rounded-2xl overflow-hidden transition-all hover:-translate-y-3 hover:scale-105 duration-700 transform ${isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'}`}
+              style={{ animationDelay: `${300 + index * 150}ms` }}
             >
               {/* Image Container */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-56 overflow-hidden border-b-2 border-gradient-to-r from-blue-100 to-emerald-100">
                 {imageLoading[index] && (
                   <div className="absolute inset-0 flex justify-center items-center bg-gray-100">
-                    <div className="border-4 border-t-blue-600 border-blue-200 rounded-full w-8 h-8 animate-spin"></div>
+                    <div className="border-4 border-t-blue-600 border-blue-200 rounded-full w-8 h-8 animate-spin shadow-lg"></div>
                   </div>
                 )}
                 
@@ -133,7 +136,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-fill group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-fill group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 filter group-hover:brightness-110"
                     onError={() => handleImageError(index)}
                     onLoad={() => handleImageLoad(index)}
                     onLoadStart={() => handleImageLoadStart(index)}
@@ -141,11 +144,11 @@ const Projects = () => {
                 )}
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 
                 {/* Category Badge */}
                 <div className="top-4 left-4 absolute">
-                  <span className={`inline-block bg-gradient-to-r ${getCategoryColor(project.category)} px-3 py-1 rounded-full font-medium text-white text-xs shadow-lg`}>
+                  <span className={`inline-block bg-gradient-to-r ${getCategoryColor(project.category)} px-3 py-1 rounded-full font-medium text-white text-xs shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
                     {project.category}
                   </span>
                 </div>
@@ -156,7 +159,7 @@ const Projects = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex justify-center items-center bg-white/90 hover:bg-white shadow-lg backdrop-blur-sm rounded-full w-10 h-10 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                    className="flex justify-center items-center bg-white/90 hover:bg-white shadow-lg backdrop-blur-sm rounded-full w-10 h-10 text-gray-700 hover:text-blue-600 hover:scale-110 transition-all duration-300"
                     title="View Live Demo"
                   >
                     <Eye size={16} />
@@ -165,7 +168,7 @@ const Projects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex justify-center items-center bg-white/90 hover:bg-white shadow-lg backdrop-blur-sm rounded-full w-10 h-10 text-gray-700 hover:text-gray-900 transition-colors duration-200"
+                    className="flex justify-center items-center bg-white/90 hover:bg-white shadow-lg backdrop-blur-sm rounded-full w-10 h-10 text-gray-700 hover:text-gray-900 hover:scale-110 transition-all duration-300"
                     title="View Source Code"
                   >
                     <Github size={16} />
@@ -174,7 +177,7 @@ const Projects = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-8 bg-gradient-to-br from-white to-gray-50 group-hover:from-blue-50 group-hover:to-emerald-50 transition-all duration-500">
                 <h3 className="mb-3 font-bold text-gray-900 group-hover:text-blue-600 text-xl transition-colors duration-300">
                   {project.title}
                 </h3>
@@ -187,7 +190,7 @@ const Projects = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={tech}
-                      className="bg-gradient-to-r from-gray-50 hover:from-blue-50 to-gray-100 hover:to-blue-100 px-3 py-1.5 border border-gray-200 hover:border-blue-200 rounded-lg font-medium text-gray-700 hover:text-blue-700 text-sm transition-all duration-200 cursor-default"
+                      className="bg-gradient-to-r from-gray-50 hover:from-blue-50 to-gray-100 hover:to-blue-100 px-3 py-1.5 border border-gray-200 hover:border-blue-200 rounded-lg font-medium text-gray-700 hover:text-blue-700 text-sm transition-all hover:scale-105 duration-300 cursor-default shadow-sm hover:shadow-md"
                       style={{ animationDelay: `${techIndex * 100}ms` }}
                     >
                       {tech}
@@ -201,18 +204,18 @@ const Projects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn flex items-center space-x-2 hover:shadow-md px-4 py-2.5 border-2 border-gray-200 hover:border-gray-900 rounded-lg font-medium text-gray-700 hover:text-gray-900 transition-all duration-200"
+                    className="group/btn flex items-center space-x-2 hover:shadow-lg px-4 py-2.5 border-2 border-gray-200 hover:border-gray-900 rounded-lg font-medium text-gray-700 hover:text-gray-900 hover:scale-105 transition-all duration-300"
                   >
-                    <Github size={18} className="group-hover/btn:rotate-12 transition-transform duration-200" />
+                    <Github size={18} className="group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform duration-300" />
                     <span>Code</span>
                   </a>
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn flex items-center space-x-2 bg-gradient-to-r from-blue-600 hover:from-blue-700 to-blue-700 hover:to-blue-800 hover:shadow-lg px-4 py-2.5 rounded-lg font-medium text-white hover:scale-105 transition-all duration-200"
+                    className="group/btn flex items-center space-x-2 bg-gradient-to-r from-blue-600 hover:from-blue-700 to-blue-700 hover:to-blue-800 hover:shadow-xl px-4 py-2.5 rounded-lg font-medium text-white hover:scale-110 transition-all duration-300"
                   >
-                    <ExternalLink size={18} className="group-hover/btn:rotate-12 transition-transform duration-200" />
+                    <ExternalLink size={18} className="group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform duration-300" />
                     <span>Live Demo</span>
                   </a>
                 </div>
