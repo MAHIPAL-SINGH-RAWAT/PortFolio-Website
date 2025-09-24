@@ -2,7 +2,7 @@ import React from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const Skills = () => {
-  const [ref, isVisible] = useScrollAnimation(0.2)
+  const [ref, isVisible] = useScrollAnimation(0.1, '0px 0px -50px 0px')
 
   const skillCategories = [
     {
@@ -40,11 +40,11 @@ const Skills = () => {
       ref={ref}
     >
       <div className='mx-auto px-6 max-w-6xl'>
-        <div className={`mb-16 text-center transition-all duration-1000 ${isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-10'}`}>
+        <div className={`mb-16 text-center transition-all duration-1000 ${isVisible ? 'animate-slide-in-down opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className='mb-6 font-bold text-gray-900 text-4xl md:text-5xl'>
             Skills & Expertise
           </h2>
-          <div className='bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full w-24 h-1'></div>
+          <div className={`bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full w-24 h-1 transition-all duration-1000 ${isVisible ? 'animate-pulse-slow' : ''}`}></div>
           <p className='mx-auto mt-6 max-w-3xl text-gray-600 text-xl'>
             I'm always learning and expanding my skill set to stay current with
             the latest technologies and industry trends.
@@ -55,7 +55,7 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className={`bg-white shadow-lg hover:shadow-xl p-8 rounded-xl transition-all duration-500 hover:scale-105 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+              className={`bg-white shadow-lg hover:shadow-xl p-8 rounded-xl transition-all duration-500 hover:scale-105 border-2 border-transparent hover:border-gradient-to-r hover:from-blue-200 hover:to-emerald-200 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}
               style={{ animationDelay: `${300 + categoryIndex * 200}ms` }}
             >
               <h3 className='mb-6 font-semibold text-gray-900 text-2xl text-center'>
@@ -74,7 +74,7 @@ const Skills = () => {
                     </div>
                     <div className='bg-gray-200 rounded-full w-full h-2'>
                       <div
-                        className={`bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full h-2 transition-all duration-1500 ease-out ${isVisible ? '' : 'w-0'}`}
+                        className={`bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full h-2 transition-all duration-2000 ease-out shadow-sm ${isVisible ? '' : 'w-0'}`}
                         style={{ width: isVisible ? `${skill.level}%` : '0%', transitionDelay: `${500 + categoryIndex * 200 + skillIndex * 100}ms` }}
                       ></div>
                     </div>
@@ -86,18 +86,18 @@ const Skills = () => {
         </div>
 
         <div className='mt-16 text-center'>
-          <div className={`inline-block bg-white shadow-lg p-8 rounded-xl transition-all duration-1000 hover:scale-105 ${isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
+          <div className={`inline-block bg-white shadow-lg p-8 rounded-xl transition-all duration-1000 hover:scale-105 border-2 border-transparent hover:border-gradient-to-r hover:from-blue-200 hover:to-emerald-200 ${isVisible ? 'animate-rotate-in opacity-100' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
             <h3 className='mb-4 font-semibold text-gray-900 text-2xl'>
               Always Learning
             </h3>
             <p className='mb-6 text-gray-600'>
-              Currently exploring: REST APIs, React Patterns, and Node.js
+              Currently exploring: REST APIs, React Patterns, Node.js, and Express.js
             </p>
             <div className='flex flex-wrap justify-center gap-3'>
               {['REST APIs', 'React Patterns', 'Node.js', 'Express.js'].map(tech => (
                 <span
                   key={tech}
-                  className='bg-gradient-to-r from-blue-600 to-emerald-500 px-4 py-2 rounded-full font-medium text-white text-sm'
+                  className='bg-gradient-to-r from-blue-600 to-emerald-500 px-4 py-2 rounded-full font-medium text-white text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300'
                 >
                   {tech}
                 </span>

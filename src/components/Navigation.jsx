@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react'
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [scrolled, setScrolled] = useState(false)
 
   const navItems = [
     { id: 'hero', label: 'Home' },
@@ -15,6 +16,9 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Handle navbar background change
+      setScrolled(window.scrollY > 50)
+      
       const sections = navItems.map(item => document.getElementById(item.id))
       const scrollPosition = window.scrollY + 100
 
@@ -42,10 +46,16 @@ const Navigation = () => {
   }
 
   return (
-    <nav className='top-0 right-0 left-0 z-50 fixed bg-white/90 backdrop-blur-md border-gray-200/50 border-b'>
+    <nav className={`top-0 right-0 left-0 z-50 fixed transition-all duration-500 ${
+      scrolled 
+        ? 'bg-white/95 backdrop-blur-lg shadow-lg border-gray-200/80 border-b' 
+        : 'bg-white/90 backdrop-blur-md border-gray-200/50 border-b'
+    }`}>
       <div className='mx-auto px-6 py-4 max-w-6xl'>
         <div className='flex justify-between items-center'>
-          <div className='bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 font-bold text-transparent text-2xl'>
+          <div className={`bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 font-bold text-transparent text-2xl transition-all duration-300 ${
+            scrolled ? 'scale-95' : 'scale-100'
+          }`}>
             Portfolio
           </div>
 

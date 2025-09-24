@@ -50,9 +50,13 @@ const Hero = () => {
             <button className='bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-lg px-8 py-3 rounded-full font-medium text-white hover:scale-105 transition-all duration-300'>
               View My Work
             </button>
-            <button className='px-8 py-3 border-2 border-gray-300 hover:border-blue-600 rounded-full font-medium text-gray-700 hover:text-blue-600 transition-all duration-300'>
+            <a 
+              href="/Resume - Mahipal_Singh_Rawat.pdf" 
+              download="Mahipal_Singh_Rawat_Resume.pdf"
+              className='px-8 py-3 border-2 border-gray-300 hover:border-blue-600 rounded-full font-medium text-gray-700 hover:text-blue-600 transition-all duration-300 inline-block'
+            >
               Download Resume
-            </button>
+            </a>
           </div>
 
           <div className='flex justify-center space-x-6 pt-8'>

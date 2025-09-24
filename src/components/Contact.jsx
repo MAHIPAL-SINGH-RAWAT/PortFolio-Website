@@ -3,7 +3,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 
 const Contact = () => {
-  const [ref, isVisible] = useScrollAnimation(0.2)
+  const [ref, isVisible] = useScrollAnimation(0.1, '0px 0px -50px 0px')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -59,11 +59,11 @@ const Contact = () => {
       ref={ref}
     >
       <div className='mx-auto px-6 max-w-6xl'>
-        <div className={`mb-16 text-center transition-all duration-1000 ${isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-10'}`}>
+        <div className={`mb-16 text-center transition-all duration-1000 ${isVisible ? 'animate-slide-in-down opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className='mb-6 font-bold text-gray-900 text-4xl md:text-5xl'>
             Get In Touch
           </h2>
-          <div className='bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full w-24 h-1'></div>
+          <div className={`bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto rounded-full w-24 h-1 transition-all duration-1000 ${isVisible ? 'animate-pulse-slow' : ''}`}></div>
           <p className='mx-auto mt-6 max-w-3xl text-gray-600 text-xl'>
             Have a project in mind or want to collaborate? I'd love to hear from
             you. Let's create something amazing together!
@@ -88,8 +88,8 @@ const Contact = () => {
               {contactInfo.map((info, index) => {
                 const Icon = info.icon
                 const content = (
-                  <div className='flex items-center space-x-4 bg-white shadow-sm hover:shadow-md p-4 rounded-lg transition-shadow duration-300'>
-                    <div className='bg-gradient-to-r from-blue-600 to-emerald-500 p-3 rounded-lg'>
+                  <div className='flex items-center space-x-4 bg-white shadow-sm hover:shadow-md p-4 rounded-lg transition-all duration-300 border-2 border-transparent hover:border-gradient-to-r hover:from-blue-200 hover:to-emerald-200'>
+                    <div className='bg-gradient-to-r from-blue-600 to-emerald-500 p-3 rounded-lg shadow-md'>
                       <Icon className='w-6 h-6 text-white' />
                     </div>
                     <div>
@@ -105,7 +105,7 @@ const Contact = () => {
                   <a
                     key={index}
                     href={info.link}
-                    className={`block hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                    className={`block hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}
                     style={{ animationDelay: `${600 + index * 150}ms` }}
                   >
                     {content}
@@ -113,7 +113,7 @@ const Contact = () => {
                 ) : (
                   <div
                     key={index}
-                    className={`hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                    className={`hover:scale-105 transition-all duration-500 ${isVisible ? 'animate-bounce-in' : 'opacity-0'}`}
                     style={{ animationDelay: `${600 + index * 150}ms` }}
                   >
                     {content}
@@ -122,7 +122,7 @@ const Contact = () => {
               })}
             </div>
 
-            <div className={`bg-white shadow-sm p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
+            <div className={`bg-white shadow-sm p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-gradient-to-r hover:from-blue-200 hover:to-emerald-200 ${isVisible ? 'animate-rotate-in' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
               <h4 className='mb-3 font-semibold text-gray-900'>
                 Quick Response
               </h4>
@@ -134,7 +134,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className={`bg-white shadow-lg p-8 rounded-xl transition-all duration-1000 delay-500 hover:shadow-xl ${isVisible ? 'animate-fade-in-right opacity-100' : 'opacity-0 translate-x-10'}`}>
+          <div className={`bg-white shadow-lg p-8 rounded-xl transition-all duration-1000 delay-500 hover:shadow-xl border-2 border-transparent hover:border-gradient-to-r hover:from-blue-200 hover:to-emerald-200 ${isVisible ? 'animate-fade-in-right opacity-100' : 'opacity-0 translate-x-10'}`}>
             <h3 className='mb-6 font-semibold text-gray-900 text-2xl'>
               Send a Message
             </h3>
@@ -155,7 +155,7 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300'
+                    className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300 hover:border-gray-400'
                     placeholder='Your name'
                   />
                 </div>
@@ -173,7 +173,7 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300'
+                    className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300 hover:border-gray-400'
                     placeholder='your.email@example.com'
                   />
                 </div>
@@ -193,7 +193,7 @@ const Contact = () => {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300'
+                  className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300 hover:border-gray-400'
                   placeholder='Project inquiry, collaboration, etc.'
                 />
               </div>
@@ -212,14 +212,14 @@ const Contact = () => {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300 resize-none'
+                  className='px-4 py-3 border border-gray-300 focus:border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 w-full transition-all duration-300 resize-none hover:border-gray-400'
                   placeholder='Tell me about your project or how I can help...'
                 />
               </div>
 
               <button
                 type='submit'
-                className='flex justify-center items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-xl px-6 py-3 rounded-lg w-full font-medium text-white hover:scale-105 transition-all duration-300 hover:from-blue-700 hover:to-blue-800'
+                className='flex justify-center items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:shadow-xl px-6 py-3 rounded-lg w-full font-medium text-white hover:scale-105 transition-all duration-300 hover:from-blue-700 hover:to-blue-800 shadow-md'
               >
                 <Send size={20} />
                 <span>Send Message</span>
