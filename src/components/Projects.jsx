@@ -122,7 +122,7 @@ const Projects = () => {
               <div className="relative h-56 overflow-hidden">
                 {imageLoading[index] && (
                   <div className="absolute inset-0 flex justify-center items-center bg-gray-100">
-                    <div className="border-4 border-t-blue-600 border-blue-200 rounded-full w-8 h-8 animate-spin shadow-lg"></div>
+                    <div className="shadow-lg border-4 border-t-blue-600 border-blue-200 rounded-full w-8 h-8 animate-spin"></div>
                   </div>
                 )}
                 
@@ -137,7 +137,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 filter group-hover:brightness-110"
+                    className="group-hover:brightness-110 w-full h-full object-cover group-hover:rotate-1 group-hover:scale-110 transition-all duration-700 filter"
                     onError={() => handleImageError(index)}
                     onLoad={() => handleImageLoad(index)}
                     onLoadStart={() => handleImageLoadStart(index)}
@@ -160,7 +160,7 @@ const Projects = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex justify-center items-center bg-white/95 hover:bg-white shadow-lg backdrop-blur-sm rounded-full w-10 h-10 text-gray-700 hover:text-blue-600 hover:scale-110 transition-all duration-300 border border-white/50"
+                    className="flex justify-center items-center bg-white/95 hover:bg-white shadow-lg backdrop-blur-sm border border-white/50 rounded-full w-10 h-10 text-gray-700 hover:text-blue-600 hover:scale-110 transition-all duration-300"
                     title="View Live Demo"
                   >
                     <Eye size={16} />
@@ -169,7 +169,7 @@ const Projects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex justify-center items-center bg-white/95 hover:bg-white shadow-lg backdrop-blur-sm rounded-full w-10 h-10 text-gray-700 hover:text-gray-900 hover:scale-110 transition-all duration-300 border border-white/50"
+                    className="flex justify-center items-center bg-white/95 hover:bg-white shadow-lg backdrop-blur-sm border border-white/50 rounded-full w-10 h-10 text-gray-700 hover:text-gray-900 hover:scale-110 transition-all duration-300"
                     title="View Source Code"
                   >
                     <Github size={16} />
@@ -178,7 +178,7 @@ const Projects = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8 bg-gradient-to-br from-white to-gray-50 group-hover:from-blue-50/50 group-hover:to-emerald-50/50 transition-all duration-500 border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-blue-200 group-hover:to-emerald-200">
+              <div className="bg-gradient-to-br from-white group-hover:from-blue-200 group-hover:from-blue-50/50 to-gray-50 group-hover:to-emerald-200 group-hover:to-emerald-50/50 p-8 border-2 group-hover:border-gradient-to-r border-transparent transition-all duration-500">
                 <h3 className="mb-3 font-bold text-gray-900 group-hover:text-blue-600 text-xl transition-colors duration-300">
                   {project.title}
                 </h3>
@@ -191,7 +191,7 @@ const Projects = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={tech}
-                      className="bg-gradient-to-r from-gray-50 hover:from-blue-50 to-gray-100 hover:to-blue-100 px-3 py-1.5 border border-gray-200 hover:border-blue-200 rounded-lg font-medium text-gray-700 hover:text-blue-700 text-sm transition-all hover:scale-105 duration-300 cursor-default shadow-sm hover:shadow-md backdrop-blur-sm"
+                      className="bg-gradient-to-r from-gray-50 hover:from-blue-50 to-gray-100 hover:to-blue-100 shadow-sm hover:shadow-md backdrop-blur-sm px-3 py-1.5 border border-gray-200 hover:border-blue-200 rounded-lg font-medium text-gray-700 hover:text-blue-700 text-sm hover:scale-105 transition-all duration-300 cursor-default"
                       style={{ animationDelay: `${techIndex * 100}ms` }}
                     >
                       {tech}
@@ -205,7 +205,7 @@ const Projects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn flex items-center space-x-2 hover:shadow-lg px-4 py-2.5 border-2 border-gray-200 hover:border-gray-900 rounded-lg font-medium text-gray-700 hover:text-gray-900 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+                    className="group/btn flex items-center space-x-2 hover:shadow-lg backdrop-blur-sm px-4 py-2.5 border-2 border-gray-200 hover:border-gray-900 rounded-lg font-medium text-gray-700 hover:text-gray-900 hover:scale-105 transition-all duration-300"
                   >
                     <Github size={18} className="group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform duration-300" />
                     <span>Code</span>
@@ -214,7 +214,7 @@ const Projects = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn flex items-center space-x-2 bg-gradient-to-r from-blue-600 hover:from-blue-700 to-blue-700 hover:to-blue-800 hover:shadow-xl px-4 py-2.5 rounded-lg font-medium text-white hover:scale-110 transition-all duration-300 shadow-md"
+                    className="group/btn flex items-center space-x-2 bg-gradient-to-r from-blue-600 hover:from-blue-700 to-blue-700 hover:to-blue-800 shadow-md hover:shadow-xl px-4 py-2.5 rounded-lg font-medium text-white hover:scale-110 transition-all duration-300"
                   >
                     <ExternalLink size={18} className="group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform duration-300" />
                     <span>Live Demo</span>

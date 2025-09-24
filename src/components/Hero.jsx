@@ -3,11 +3,7 @@ import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0)
-<<<<<<< HEAD
   const roles = ['Full-Stack Developer', 'Frontend Developer', 'Photographer', 'Web Designer']
-=======
-  const roles = ['Frontend Developer', 'Full-Stack Developer', 'Web Designer' , 'Photographer']
->>>>>>> 9c7615f (Improve Code)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,11 +53,7 @@ const Hero = () => {
             <a 
               href="/Resume - Mahipal_Singh_Rawat.pdf" 
               download="Mahipal_Singh_Rawat_Resume.pdf"
-<<<<<<< HEAD
-              className='px-8 py-3 border-2 border-gray-300 hover:border-blue-600 rounded-full font-medium text-gray-700 hover:text-blue-600 transition-all duration-300 inline-block'
-=======
               className='inline-block px-8 py-3 border-2 border-gray-300 hover:border-blue-600 rounded-full font-medium text-gray-700 hover:text-blue-600 transition-all duration-300'
->>>>>>> 9c7615f (Improve Code)
             >
               Download Resume
             </a>

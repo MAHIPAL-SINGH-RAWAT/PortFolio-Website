@@ -8,7 +8,7 @@ const Skills = () => {
     {
       title: 'Frontend',
       skills: [
-        { name: 'React', level: 75 },
+        { name: 'React', level: 70 },
         { name: 'JavaScript', level: 80 },
         { name: 'Tailwind CSS', level: 80 },
         { name: 'HTML', level: 90 },
@@ -18,7 +18,7 @@ const Skills = () => {
     {
       title: 'Backend',
       skills: [
-        { name: 'MongoDB', level: 80 },
+        { name: 'MongoDB', level: 70 },
         { name: 'Node.js', level: 65 },
         { name: 'Express', level: 60 }
       ]
@@ -26,9 +26,9 @@ const Skills = () => {
     {
       title: 'Tools & Other',
       skills: [
-        { name: 'Git', level: 70 },
-        { name: 'Visual Studio', level: 90 },
-        { name: 'Vite.js', level: 70 }
+        { name: 'Git', level: 80 },
+        { name: 'Visual Studio', level: 85 },
+        { name: 'Vite.js', level: 75 }
       ]
     }
   ]

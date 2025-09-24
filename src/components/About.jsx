@@ -60,11 +60,7 @@ const About = () => {
                 <p className='text-gray-600'>Projects Completed</p>
               </div>
               <div>
-<<<<<<< HEAD
                 <h4 className='font-bold text-emerald-600 text-3xl'>2+</h4>
-=======
-                <h4 className='font-bold text-emerald-600 text-3xl'>1+</h4>
->>>>>>> 9c7615f (Improve Code)
                 <p className='text-gray-600'>Years Frontend Experience</p>
               </div>
             </div>
@@ -79,11 +75,7 @@ const About = () => {
                   className={`flex items-start space-x-4 bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-lg border-2 border-transparent hover:border-gradient-to-r hover:from-blue-200 hover:to-emerald-200 ${isVisible ? 'animate-bounce-in' : ''}`}
                   style={{ animationDelay: `${800 + index * 200}ms` }}
                 >
-<<<<<<< HEAD
                   <div className='bg-gradient-to-r from-blue-600 to-emerald-500 p-3 rounded-lg shadow-lg'>
-=======
-                  <div className='bg-gradient-to-r from-blue-600 to-emerald-500 shadow-lg p-3 rounded-lg'>
->>>>>>> 9c7615f (Improve Code)
                     <Icon className='w-6 h-6 text-white' />
                   </div>
                   <div>
