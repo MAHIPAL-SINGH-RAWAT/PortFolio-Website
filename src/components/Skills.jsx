@@ -8,27 +8,27 @@ const Skills = () => {
     {
       title: 'Frontend',
       skills: [
-        { name: 'React', level: 95 },
-        { name: 'JavaScript', level: 92 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'HTML', level: 95 },
-        { name: 'CSS', level: 88 }
+        { name: 'React', level: 75 },
+        { name: 'JavaScript', level: 80 },
+        { name: 'Tailwind CSS', level: 80 },
+        { name: 'HTML', level: 90 },
+        { name: 'CSS', level: 90 }
       ]
     },
     {
       title: 'Backend',
       skills: [
         { name: 'MongoDB', level: 80 },
-        { name: 'Node.js', level: 85 },
-        { name: 'Express', level: 82 }
+        { name: 'Node.js', level: 65 },
+        { name: 'Express', level: 60 }
       ]
     },
     {
       title: 'Tools & Other',
       skills: [
-        { name: 'Git', level: 92 },
+        { name: 'Git', level: 70 },
         { name: 'Visual Studio', level: 90 },
-        { name: 'Vite.js', level: 85 }
+        { name: 'Vite.js', level: 70 }
       ]
     }
   ]
@@ -91,13 +91,13 @@ const Skills = () => {
               Always Learning
             </h3>
             <p className='mb-6 text-gray-600'>
-              Currently exploring: REST APIs, React Patterns, Node.js, and Express.js
+              Currently exploring: APIs, React Patterns, Node.js
             </p>
             <div className='flex flex-wrap justify-center gap-3'>
-              {['REST APIs', 'React Patterns', 'Node.js', 'Express.js'].map(tech => (
+              {['APIs', 'React Patterns', 'Node.js'].map(tech => (
                 <span
                   key={tech}
-                  className='bg-gradient-to-r from-blue-600 to-emerald-500 px-4 py-2 rounded-full font-medium text-white text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300'
+                  className='bg-gradient-to-r from-blue-600 to-emerald-500 shadow-md hover:shadow-lg px-4 py-2 rounded-full font-medium text-white text-sm hover:scale-105 transition-all duration-300'
                 >
                   {tech}
                 </span>
